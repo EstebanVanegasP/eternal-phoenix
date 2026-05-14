@@ -1,0 +1,68 @@
+.ember-field {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ember {
+  position: absolute;
+  bottom: -24px;
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: #ffb23f;
+  box-shadow:
+    0 0 12px rgba(255, 178, 63, 0.8),
+    0 0 24px rgba(242, 106, 27, 0.45);
+  opacity: 0;
+  animation: ember-rise 11s linear infinite;
+}
+
+@keyframes ember-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.7);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.82;
+  }
+
+  70% {
+    opacity: 0.42;
+  }
+
+  100% {
+    transform: translate3d(32px, -112vh, 0) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  48% {
+    transform: translateX(-72%) rotate(18deg);
+  }
+
+  72%,
+  100% {
+    transform: translateX(72%) rotate(18deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .ember {
+    display: none;
+  }
+}
